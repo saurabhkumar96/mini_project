@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+chai aur code
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to django | TweetHub</h1>
+<a href="{% url 'tweet_create' %}" class="btn btn-primary mb-4">Create a tweet</a>
+<div class="container row gap-3">
+  {% comment %} {% for tweet in all_tweets %} {% endcomment %}
+  {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+    {% comment %} <img src="{{tweet.photo.url}}" class="card-img-top" alt="..."> {% endcomment %}
+    {% comment %} <div class="card-body"> {% endcomment %}
+      {% comment %} <h5 class="card-title">{{tweet.user.username}}</h5> {% endcomment %}
+      {% comment %} <p class="card-text">{{tweet.text}}</p> {% endcomment %}
+      {% comment %} {% if tweet.user == user %} {% endcomment %}
+      {% comment %} <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a> {% endcomment %}
+      {% comment %} {% endif %} {% endcomment %}
+    {% comment %} </div>
+  </div> {% endcomment %}
+  {% comment %} {% endfor %} {% endcomment %}
+</div>
+{% endblock %}
