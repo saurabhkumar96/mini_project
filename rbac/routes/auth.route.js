@@ -1,10 +1,10 @@
 import express from "express"
+import { register, login } from "../controllers/auth.controller.js"
+
 const router = express.Router()
-import  prisma  from "../lib/db.js"
 
-router.get("/", async(req,res)=>{
-
-    })
+router.post("/register", register)
+router.post("/login", login)
 
 export default router
 
