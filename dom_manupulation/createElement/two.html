@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hi
+</body>
+<script>
+    const div = document.createElement("div")
+    div.className = "main"
+    div.id = "myId"
+    div.setAttribute("title", "generated title")
+    div.style.backgroundColor = "red"
+    console.log(div)
+
+    // div.innerText = "I am learning thml"
+    const addText = document.createTextNode("chai aur code")
+    div.appendChild(addText)
+
+    document.body.appendChild(div)
+    
+</script>
+</html>
