@@ -1,16 +1,58 @@
-# React + Vite
+An HTTP request is a text-based message sent by a client (like a web browser or mobile app) to a server to ask for a resource or trigger an action. It is the fundamental communication mechanism of the Hypertext Transfer Protocol (HTTP), which serves as the backbone of data exchange on the World Wide Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+React Router and HTTP requests are two fundamental but completely different concepts used to build modern web applications. While React Router manages navigation and changes what the user sees on the screen within the app, HTTP requests handle the background communication to fetch or send data to an external server
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Frontend
+    │
+    │ HTTP Request
+    ▼
+Backend
+    │
+    │ Process request
+    │
+    ├── Validate data
+    ├── Business logic
+    ├── Database query
+    │
+    ▼
+HTTP Response (JSON)
+    │
+    ▼
+Frontend updates UI
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<!-- second -->
+React Component
+      │
+      ▼
+Axios / Fetch
+      │
+HTTP Request
+      │
+      ▼
+Express Route
+      │
+      ▼
+Controller
+      │
+      ▼
+Service (optional)
+      │
+      ▼
+Database
+      │
+      ▼
+JSON Response
+      │
+      ▼
+React UI Update
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Method	Use Case	Popularity
+Fetch API	Small to medium apps	⭐⭐⭐⭐
+Axios	React + Express projects	⭐⭐⭐⭐⭐
+TanStack Query + Axios	Medium to large React apps	⭐⭐⭐⭐⭐
+RTK Query	Redux projects	⭐⭐⭐⭐
+GraphQL	Large systems with complex data needs	⭐⭐⭐
+WebSocket	Real-time features	⭐⭐⭐
