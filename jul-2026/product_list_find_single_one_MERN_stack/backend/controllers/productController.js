@@ -1,7 +1,27 @@
 const db  = require('../models/db')
 
 exports.getAllproducts = function(req, res) {
-    db.all("SELECT * FROM products", (err, rows) =>{
+    const sql = "SELECT * FROM products"
+
+    db.all(sql, (err, rows) =>{
+        if (err) {
+            console.log(err);
+        }else{
+            res.json(rows)
+        }
+    })
+}
+
+
+exports.getAllproductsforPagination = function(req, res) {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 5;
+
+    const offset = (page - 1) * limit;
+
+    const sql  = `SELECT * FROM products LIMIT ? OFFSET ?`
+
+    db.all(sql,[limit, offset], (err, rows) =>{
         if (err) {
             console.log(err);
         }else{
