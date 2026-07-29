@@ -15,11 +15,9 @@ db.serialize(() => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             price INTEGER,
-            category TEXT,
-            image TEXT
+            category TEXT
         )
     `);
-    
 
     db.run(`
        INSERT INTO products (name, price, category)

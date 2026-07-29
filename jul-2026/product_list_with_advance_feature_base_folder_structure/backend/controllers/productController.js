@@ -49,6 +49,7 @@ exports.getSingleProduct = function(req, res) {
 
 exports.createProduct = function(req, res) {
     const {name, price, category} = req.body;
+    const image = req.file? req.file.filename: null;
 
     if (!name || !price || !category) {
         return res.status(400).json({
@@ -57,17 +58,18 @@ exports.createProduct = function(req, res) {
     }
 
     const sql = `
-        INSERT INTO products(name, price, category)
-        VALUES(?, ?, ?)
+        INSERT INTO products(name, price, category,image)
+        VALUES(?, ?, ?,?)
     `;
 
-    db.run(sql,[name, price, category], (err)=>{
+    db.run(sql,[name, price, category, image], (err)=>{
         if(err){
             return res.status(500).json(err)
         }
         res.status(201).json({
             message: "Product created",
-            id: this.lastId
+            id: this.id,
+            image
         })
     })
 }
@@ -134,3 +136,19 @@ exports.deleteProduct = (req, res) => {
     );
 
 };
+
+exports.deleteAllProducts = (req, res) =>{
+    const sql = `
+        DELETE FROM products
+    `
+
+    db.run(sql, (err) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.json({
+            status: true,
+            message: "All Products Deleted"
+        });
+    })
+}

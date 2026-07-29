@@ -1,0 +1,10 @@
+const express = require("express");
+
+const router = express.Router();
+
+const productController = require("../controllers/productController");
+router.get("/", productController.getAllproducts);
+router.get("/pagination", productController.getAllproductsforPagination);
+router.get("/:id", productController.getSingleProduct);
+
+module.exports = router;

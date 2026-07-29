@@ -1,0 +1,18 @@
+React Frontend
+      │
+      │ HTTP Request
+      ▼
+Express Middleware
+      │
+      ├───────────────┐
+      │               │
+      ▼               ▼
+Rate Limiter      Throttler
+      │               │
+      └──────┬────────┘
+             ▼
+      Authentication
+             ▼
+        Route Handler
+             ▼
+        Database
