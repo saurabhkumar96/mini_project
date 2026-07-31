@@ -22,5 +22,15 @@ export const useProducts = () => {
         return data
     };
 
+    const handleDeleteProduct = async (id) => {
+        const data = await deleteProduct(id)
+        return data
+    };
+
+    const handleUpdateProduct = async (id, ) => {
+        const data = await updateProduct(id,data)
+        return data
+    };
+
     return {handleGetAllProducts,handleGetSingleProduct,handleGetSearchSortProducts,handleGetProductsPagination};
 };

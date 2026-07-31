@@ -45,3 +45,110 @@ exports.getSingleProduct = function(req, res) {
         }
     })
 }
+
+
+exports.createProduct = function(req, res) {
+    const {name, price, category} = req.body;
+    const image = req.file? req.file.filename: null;
+
+    if (!name || !price || !category) {
+        return res.status(400).json({
+            message: "All fields are required"
+        });
+    }
+
+    const sql = `
+        INSERT INTO products(name, price, category,image)
+        VALUES(?, ?, ?,?)
+    `;
+
+    db.run(sql,[name, price, category, image], (err)=>{
+        if(err){
+            return res.status(500).json(err)
+        }
+        res.status(201).json({
+            message: "Product created",
+            id: this.id,
+            image
+        })
+    })
+}
+
+
+exports.updateProduct = (req, res) => {
+    const { id } = req.params;
+    const { name, price, category } = req.body;
+    const sql = `
+        UPDATE products
+        SET
+            name=?,
+            price=?,
+            category=?
+        WHERE id=?
+    `;
+
+    db.run(
+        sql,
+        [name, price, category, id],
+        function(err) {
+
+            if (err) {
+                return res.status(500).json(err);
+            }
+
+            if (this.changes === 0) {
+                return res.status(404).json({
+                    message: "Product not found"
+                });
+            }
+
+            res.json({
+                message: "Product Updated"
+            });
+        }
+    );
+};
+
+
+exports.deleteProduct = (req, res) => {
+    const { id } = req.params;
+    const sql = `
+        DELETE FROM products
+        WHERE id=?
+    `;
+    db.run(
+        sql,
+        [id],
+        function(err) {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            if (this.changes === 0) {
+                return res.status(404).json({
+                    message: "Product not found"
+                });
+            }
+            res.json({
+                status: true,
+                message: "Product Deleted"
+            });
+        }
+    );
+
+};
+
+exports.deleteAllProducts = (req, res) =>{
+    const sql = `
+        DELETE FROM products
+    `
+
+    db.run(sql, (err) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.json({
+            status: true,
+            message: "All Products Deleted"
+        });
+    })
+}

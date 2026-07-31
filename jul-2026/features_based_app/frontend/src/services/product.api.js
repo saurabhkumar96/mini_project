@@ -14,6 +14,10 @@ const api = axios.create({
         // router.get("/:id", productController.getSingleProduct);
 // app.use("/search-sort", require("./routes/searchSortProductRoute"))
         // router.get("/", searchSortController.getProducts);
+        // router.post("/create", validateProduct,upload.single("image"),productController.createProduct)
+        // router.put("/:id",validateProduct, productController.updateProduct)
+        // router.delete("/:id", productController.deleteProduct)
+        // router.delete("/", productController.deleteAllProducts)
 
 
 // Get all products
@@ -40,4 +44,23 @@ export async function getSearchSortProducts() {
   return res.data;
 }
 
-export default api;
+export async function deleteAllProducts() {
+  const res = await api.delete("/products");
+  return res.data;
+}
+
+export async function deleteProduct(id) {
+  const res = await api.delete(`/products/${id}`);
+  return res.data;
+}
+
+export async function updateProduct(id, data) {
+  const res = await api.put(`/products/${id}`, data);
+  return res.data;
+}
+
+export async function createProduct(data) {
+  const res = await api.post("/products", data);
+  return res.data;
+}
+
