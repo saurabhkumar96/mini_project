@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse
+from django.http import HttpResponse
+import datetime
+from django.views.generic import ListView
+from .models import GeeksModel
 
 def simple_view(request,pk):
     print("hello i am pk",pk)
@@ -26,3 +30,18 @@ def loop(request):
     }
     return render(request, "loop.html", context)
 
+
+def timeshow(request):
+    now = datetime.datetime.now()
+    html = f"time is {now}"
+    if(request.POST):
+        print("I am Post")
+    elif (request.GET):
+        print("I am get")
+    return HttpResponse(html)
+
+
+class GeeksList(ListView):
+    model = GeeksModel
+    template_name = "polls/geeksModelList.html"
+    context_object_name = "object_list"

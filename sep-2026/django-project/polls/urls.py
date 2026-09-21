@@ -18,10 +18,13 @@ Including another URLconf
 from django.urls import path
 from polls import views
 from django.http import HttpResponse
+from .views import GeeksList
 
 urlpatterns = [
     path('', lambda request: HttpResponse("Home Page")),
     path('simple/<int:pk>', views.simple_view, name="simple_view"),
     path('condition/', views.check_age, name="check_age"),
     path('loop/', views.loop),
+    path("time/",views.timeshow, name="time"),
+    # path("geekslist", GeeksList.as_view(), name="geeks-list")
 ]
