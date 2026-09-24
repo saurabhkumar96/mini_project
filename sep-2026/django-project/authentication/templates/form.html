@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div>name</div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ formset }}
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
