@@ -8,5 +8,7 @@ from . import views
 
 urlpatterns = [
     path("1/", views.modelformview_set, name="modelForm"),
-    path("home/",views.home, name="home")
+    path("",views.home, name="home"),
+    path("login/",views.login_page, name="login"),
+    path("register/", views.register, name="register"),
 ]
