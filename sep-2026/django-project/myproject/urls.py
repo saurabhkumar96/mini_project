@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("polls.urls")),
     path("v2/",include("authentication.urls")),
-    path("geeks/",include("geeks.urls"))
+    path("geeks/",include("geeks.urls")),
+    path('api/',include("api.urls")),
 ] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

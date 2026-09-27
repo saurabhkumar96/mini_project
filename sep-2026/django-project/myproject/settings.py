@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls',
     'authentication',
-    'geeks'
+    'geeks',
+    'rest_framework',
+    'api'
 ]
 
 
@@ -138,4 +140,4 @@ import os
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-AUTH_USER_MODEL = 'geeks.User'
+# AUTH_USER_MODEL = 'geeks.User'

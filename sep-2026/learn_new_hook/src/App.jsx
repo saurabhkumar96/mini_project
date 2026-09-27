@@ -31,7 +31,6 @@ export default function App() {
       <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
       <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-      
       <button onClick={() => dispatch({ type: 'set_value', payload: 10 })}>
         Set to 10
       </button>
