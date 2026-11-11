@@ -4,5 +4,10 @@ from .models import Item
 
 class ItemSerilizer(serializers.ModelSerializer):
     class Meta:
-        model= Item
-        fields = ('category','subcategory', 'name', 'amount')
+        model= Item #modelName
+        fields = ('category','subcategory', 'name', 'amount') #fielf of meta
+
+class CommentSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    content = serializers.CharField(max_length = 200)
+    created = serializers.DateTimeField()
